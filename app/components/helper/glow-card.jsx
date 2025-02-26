@@ -1,11 +1,17 @@
-"use client"
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const GlowCard = ({ children , identifier}) => {
+const GlowCard = ({ children, identifier }) => {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true); // Ensures it runs only on the client-side
+
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
+
+    if (!CONTAINER || CARDS.length === 0) return;
 
     const CONFIG = {
       proximity: 40,
@@ -62,11 +68,12 @@ const GlowCard = ({ children , identifier}) => {
     RESTYLE();
     UPDATE();
 
-    // Cleanup event listener
     return () => {
       document.body.removeEventListener('pointermove', UPDATE);
     };
   }, [identifier]);
+
+  if (!isClient) return null; // Prevents hydration mismatch
 
   return (
     <div className={`glow-container-${identifier} glow-container`}>

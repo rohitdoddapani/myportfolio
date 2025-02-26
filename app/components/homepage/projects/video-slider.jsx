@@ -1,10 +1,14 @@
-"use client"; // Add this for useState hooks to work properly
+"use client"; 
 
 import React from 'react';
 
 const VideoCarousel = ({ videosData }) => {
   const handleWatchNow = (url) => {
-    window.open(url, '_blank'); // Open the video URL in a new tab
+    if (url) {
+      window.open(url, '_blank'); // Only open if URL is valid
+    } else {
+      console.warn("Video URL is missing!"); // Debugging message
+    }
   };
 
   return (
@@ -20,7 +24,7 @@ const VideoCarousel = ({ videosData }) => {
             <div className="relative overflow-hidden rounded-t-lg">
               <iframe
                 className="w-full h-64 object-cover"
-                src={video.url}
+                src={video.url || ""}
                 title={`Video ${index + 1}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -33,8 +37,9 @@ const VideoCarousel = ({ videosData }) => {
                 <button
                   onClick={() => handleWatchNow(video.videourl)}
                   className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-all"
+                  disabled={!video.videourl}
                 >
-                  Watch Now
+                  {video.videourl ? "Watch Now" : "Unavailable"}
                 </button>
               </div>
             </div>
