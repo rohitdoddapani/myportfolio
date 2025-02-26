@@ -6,12 +6,14 @@ const GlowCard = ({ children, identifier }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Ensures it runs only on the client-side
+    setIsClient(true); // Ensures component only runs on the client
+
+    if (typeof document === "undefined") return; // Prevents SSR issues
 
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
 
-    if (!CONTAINER || CARDS.length === 0) return;
+    if (!CONTAINER || CARDS.length === 0) return; // Avoid accessing null elements
 
     const CONFIG = {
       proximity: 40,
