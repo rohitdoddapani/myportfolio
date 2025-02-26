@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { CgGitFork } from "react-icons/cg";
 import { IoStar } from "react-icons/io5";
+import { FaHeart } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -12,12 +13,12 @@ function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/doddapani-rohit/" className="text-[#16f2b3]">Rohit Doddapani</Link>
+            © Made with &hearts; By <Link target="_blank" href="https://www.linkedin.com/in/doddapani-rohit/" className="text-[#16f2b3]">Rohit Doddapani</Link>
           </p>
           <div className="flex items-center gap-5">
             <Link
               target="_blank"
-              href="https://github.com/rohitdoddapani/Portfolio"
+              href="https://github.com/rohitdoddapani/myportfolio"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <IoStar />
@@ -25,7 +26,7 @@ function Footer() {
             </Link>
             <Link
               target="_blank"
-              href="https://github.com/rohitdoddapani/Portfolio/fork"
+              href="https://github.com/rohitdoddapani/myportfolio/fork"
               className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
             >
               <CgGitFork />
