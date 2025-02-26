@@ -6,14 +6,14 @@ const GlowCard = ({ children, identifier }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Ensures component only runs on the client
+    setIsClient(true);
 
     if (typeof document === "undefined") return; // Prevents SSR issues
 
     const CONTAINER = document.querySelector(`.glow-container-${identifier}`);
     const CARDS = document.querySelectorAll(`.glow-card-${identifier}`);
 
-    if (!CONTAINER || CARDS.length === 0) return; // Avoid accessing null elements
+    if (!CONTAINER || CARDS.length === 0) return;
 
     const CONFIG = {
       proximity: 40,
@@ -75,7 +75,7 @@ const GlowCard = ({ children, identifier }) => {
     };
   }, [identifier]);
 
-  if (!isClient) return null; // Prevents hydration mismatch
+  if (!isClient) return null; // Prevents SSR mismatch
 
   return (
     <div className={`glow-container-${identifier} glow-container`}>
