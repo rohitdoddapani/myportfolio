@@ -4,7 +4,11 @@ import Image from "next/image";
 import { BsPersonWorkspace } from "react-icons/bs";
 import lottieFile from '../../../assets/lottie/study.json';
 import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+// import GlowCard from "../../helper/glow-card";
+
+import dynamic from "next/dynamic";
+
+const GlowCard = dynamic(() => import("../../helper/glow-card"), { ssr: false });
 
 function Education() {
   return (
@@ -41,6 +45,7 @@ function Education() {
           </div>
           <div>
             <div className="flex flex-col gap-6">
+              <div>testing.....</div>
               {
                 educations.map(education => (
                   <GlowCard key={education.id} identifier={`education-${education.id}`}>
