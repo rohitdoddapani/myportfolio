@@ -1,4 +1,6 @@
-"use client"; // ✅ Forces this file to be client-side only
+"use client"; // ✅ Ensure this is a client-side component
+
+export const dynamic = 'force-dynamic'; // Prevents pre-rendering (SSG)
 
 import { useEffect, useState } from "react";
 import { personalData } from "@/utils/data/personal-data";
