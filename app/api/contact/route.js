@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
+  console.log('inn routeejsss')
   const nodemailer = (await import("nodemailer")).default;
   const axios = (await import("axios")).default; // ✅ Only imports when needed
 
